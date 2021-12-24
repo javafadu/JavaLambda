@@ -148,8 +148,8 @@ public class Lambda01 {
     }
     //list'in en buyuk elemanini yazdiriniz
     public static void maxElfunction(List<Integer> list){
-       // Optional<Integer> maxEl = list.stream().reduce(Math::max);
-        //System.out.println(maxEl);
+     Optional<Integer> maxEl = list.stream().reduce(Math::max);
+       System.out.println(maxEl);
         //reduce()-->azaltmak ... bir cok datayi tek bir dataya(max min carp top vs islemlerde) cevirmek icin kullanilir
 
     }
