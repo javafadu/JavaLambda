@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Lambda02 {
     public static void main(String[] args) {
-        List<Integer> list = new ArrayList<>(Arrays.asList(12, -3, 65, 3, 7, 34, 22, -60, 42, 15));
+        List<Integer> list = new ArrayList<>(Arrays.asList(12, -3, 3, 65, 7, 34, 22, -60, 42, 15));
         ciftKareMax(list);
         System.out.println();
         System.out.println(" *** ");
@@ -28,6 +25,15 @@ public class Lambda02 {
         System.out.println();
         System.out.println(" *** ");
         min4(list);
+        System.out.println();
+        System.out.println(" *** ");
+        onbestenBykKckTekSayi(list);
+        System.out.println();
+        System.out.println(" *** ");
+        ciftKareKckByg(list);
+        System.out.println();
+        System.out.println(" *** ");
+        tekKareBygKck( list);
     }
 
     //List'in cift olan elemanlarin karelerini aliniz ve en buyugunu yazdiriniz
@@ -103,27 +109,50 @@ public class Lambda02 {
     //3. yontem Method Reference --> Haluk class
 
     public static int minBul(int x, int y) {
-        return x<y ?x:y;//ternary
+        return x < y ? x : y;//ternary
 
     }
+
     public static void min3(List<Integer> list) {
         Optional<Integer> min = list.stream().reduce(Lambda02::minBul);
         System.out.println(min);
     }
+
     //4. yontem Lambda Expression
     public static void min4(List<Integer> list) {
-      Integer  min = list.stream().reduce(Integer.MAX_VALUE,(x,y)->x<y?x:y);
+        Integer min = list.
+                stream().
+                reduce(Integer.MAX_VALUE, (x, y) -> x < y ? x : y);
         System.out.println(min);
     }
 
+    //List'teki 15'ten buyuk en kucvuk tek sayiyi yazdiriniz
+    public static void onbestenBykKckTekSayi(List<Integer> list) {
+        // list.stream().filter(t->t % 2 == 1).filter(t-> t>15).reduce(Integer::min);
+        System.out.println(list.
+                stream().//akısa girdi
+                        filter(t -> t % 2 == 1 & t > 15).//tek ve 15 den byk sarti
+                        reduce(Integer::min));//min deger reduce edildi
+    }
+    //list'in cift  elemanlarinin kareleri ni  kucuge buykten yazdiriniz
+    public static void ciftKareKckByg(List<Integer> list){
+        list.
+                stream().
+                filter(Lambda01::ciftBul).
+                map(t->t*t).
+                sorted().//akısa giren elelmanlar naturel order'e gore siralanir
+                forEach(Lambda01::printEl);//144 484 1156 1764 3600
 
+    }
+    //list'in tek  elemanlarinin kareleri ni buykten kucuge  yazdiriniz
 
+    public static void tekKareBygKck(List<Integer> list){
+        list.
+                stream().
+                filter(t->t%2!=0).
+                map(t->t*t).
+                sorted(Comparator.reverseOrder()).//akısa giren elelmanlar ters siralanir
+                forEach(Lambda01::printEl);//144 484 1156 1764 3600
 
-
-
-
-
-
-
-
+    }
 }
