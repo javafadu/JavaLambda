@@ -1,7 +1,5 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Lambda03 {
     public static void main(String[] args) {
@@ -23,7 +21,7 @@ public class Lambda03 {
         ciftKareTekrarsizTersSira(list);
         System.out.println();
         System.out.println(" *** ");
-        harfSayisi7Kontrol( list);
+        harfSayisi7Kontrol(list);
         System.out.println();
         System.out.println(" *** ");
         wBaslamaKontrol(list);
@@ -31,10 +29,16 @@ public class Lambda03 {
         wBaslamaKontrol(list);
         System.out.println();
         System.out.println(" *** ");
-        xbitmeKontrol( list);
+        xbitmeKontrol(list);
         System.out.println();
         System.out.println(" *** ");
-        karakteriEnBuyukEl( list);
+        karakteriEnBuyukEl(list);
+        System.out.println();
+        System.out.println(" *** ");
+        karakteriEnBuyukEl2(list);
+        System.out.println();
+        System.out.println(" *** ");
+        ilkElemanHarisSonHarfSirali( list);
     }
 
     //List elemanlarini alafabetik buyuk harf ve  tekrarsiz yazdiriniz
@@ -93,43 +97,68 @@ public class Lambda03 {
 
     //List elelmmalarinin karakter sayisini 7 ve 7 'den az olma durumunu kontrol ediniz
     public static void harfSayisi7Kontrol(List<String> list) {
-  // boolean  kontrol=  list.stream().
-       //     allMatch(t->t.length()<=7);//her bir elemanı harf syisini <=7 ye eslesmesine bakti
-    //    if (kontrol ) {
-    //        System.out.println("list elemanlari 7 harfden buyuk degil");
+        // boolean  kontrol=  list.stream().
+        //     allMatch(t->t.length()<=7);//her bir elemanı harf syisini <=7 ye eslesmesine bakti
+        //    if (kontrol ) {
+        //        System.out.println("list elemanlari 7 harfden buyuk degil");
 //
-    //    }else{
-    //        System.out.println("AGAM list elemanlari 7 harfden BUYUK ");
-    //    }
+        //    }else{
+        //        System.out.println("AGAM list elemanlari 7 harfden BUYUK ");
+        //    }
         //System.out.println(kontrol);
-        System.out.println(list.stream().allMatch(t -> t.length() <= 7)?"list elemanlari 7 harfden buyuk degil":"AGAM list elemanlari 7 harfden BUYUK ");
+        System.out.println(list.stream().allMatch(t -> t.length() <= 7) ? "list elemanlari 7 harfden buyuk degil" : "AGAM list elemanlari 7 harfden BUYUK ");
     }
 
-//List elelmanlarinin "W" ile baslamasını kontrol ediniz
-    public static void wBaslamaKontrol(List<String> list){
+    //List elelmanlarinin "W" ile baslamasını kontrol ediniz
+    public static void wBaslamaKontrol(List<String> list) {
         System.out.println(list.
                 stream().
-                noneMatch(t -> t.startsWith("w"))?"w ile baslayan isim kimse ayaga kalksin":"AGAM w ile baslayan isim oluuuurrr ");
+                noneMatch(t -> t.startsWith("w")) ? "w ile baslayan isim kimse ayaga kalksin" : "AGAM w ile baslayan isim oluuuurrr ");
 
 
     }
+
     //List elelmanlarinin "x" ile biten en az bir elemaı kontrol ediniz
-    public static void xbitmeKontrol(List<String> list){
+    public static void xbitmeKontrol(List<String> list) {
         System.out.println(list.
                 stream().
-                anyMatch(t -> t.endsWith("x"))?"x ile biten isim kimse ayaga kalksin":"AGAM x ile biten isim oluuuurrr ");
+                anyMatch(t -> t.endsWith("x")) ? "x ile biten isim kimse ayaga kalksin" : "AGAM x ile biten isim oluuuurrr ");
 //anyMatch() --> enaz bir eleman sarti saglarsa true aksi durumda false return eder
 //allMatch() --> tum  elemanlar sarti saglarsa true en az bir eleman sarti saglamazsa false return eder.
 //noneMatch() --> hic bir sarti SAGLAMAZSA true en az bir eleman sarti SAGLARSA false return eder.
 
     }
-    //Karakter sayisi en buyuk elemani yazdiriniz.
-   public static void karakteriEnBuyukEl(List<String> list){
-       System.out.println(list.
-               stream().
-               sorted(Comparator.comparing(t -> t.toString().length()).//lenght karakter uzunluguna gore siraladi k->b
-                       reversed()).//ters sirlad b->k
-               findFirst());//ilk elelmani aldi
 
-   }
+    //Karakter sayisi en buyuk elemani yazdiriniz.
+    public static void karakteriEnBuyukEl(List<String> list) {
+        System.out.println(list.
+                stream().
+                sorted(Comparator.comparing(t -> t.toString().length()).//lenght karakter uzunluguna gore siraladi k->b
+                        reversed()).//ters sirlad b->k
+                        findFirst());//ilk elelmani aldi
+
+    }
+
+    public static void karakteriEnBuyukEl2(List<String> list) {
+        Stream<String> sonIsim = list.
+                stream().
+                sorted(Comparator.comparing(t -> t.toString().length()).//lenght karakter uzunluguna gore siraladi k->b
+                        reversed()).//ters sirlad b->k
+                //  findFirst());//ilk elelmani aldi
+                        limit(1);//limit(a) akısdan cıkan elemanları a parametresine dore ilk a elamanı alır
+        System.out.println(Arrays.toString(sonIsim.toArray()));
+    }
+
+    //list elemanlarini son harfine göre siralayıp ilk eleman hariç kalan elemanlari yazdiriniz
+    public static void ilkElemanHarisSonHarfSirali(List<String> list) {
+        list.
+                stream().
+                sorted(Comparator.comparing(t -> t.toString().charAt(t.length() - 1))).
+                skip(1).//akıstan cikaln elelmanlarin 1. parametreyi atlar
+                forEach(t-> System.out.print(t+" "));
+
+
+    }
+
+
 }
