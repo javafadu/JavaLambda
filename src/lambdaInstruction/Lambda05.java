@@ -1,3 +1,5 @@
+package lambdaInstruction;
+
 import java.math.BigInteger;
 import java.util.stream.IntStream;
 

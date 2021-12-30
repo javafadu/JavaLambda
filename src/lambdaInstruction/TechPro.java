@@ -1,3 +1,5 @@
+package lambdaInstruction;
+
 public class TechPro {
 
     private String batch;
