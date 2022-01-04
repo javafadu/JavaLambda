@@ -28,7 +28,13 @@ public class Q03 {
         //Konsoldaki farklı öğeleri ters sırada yazdırın.
         //list.stream().distinct().sorted(Comparator.reverseOrder()).forEach(t -> System.out.print(t+" "));
         //Uzunluğu 7'den küçük olan farklı öğeleri ters sırada konsolda büyük harflerle yazdırın.
-        list.stream().filter(t->t.length()<7).distinct().sorted(Comparator.reverseOrder()).map(t ->t.toUpperCase()).forEach(System.out::print);
+        list.
+                stream().
+                filter(t->t.length()<7).
+                distinct().
+                sorted(Comparator.reverseOrder()).
+                map(t ->t.toUpperCase()).
+                forEach(System.out::print);
 
 
     }
