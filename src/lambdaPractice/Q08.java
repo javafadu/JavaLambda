@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 public class Q08 {
-    // 7 ile bolunebilen ilk 10 tamsayinin toplamini ekrana yazdiriniz.
+    // 7 ile bolunebilen ilk 10 tamsayinin toplamini ekrana yazdiriniz..
     public static void main(String[] args) {
         //1.way
         System.out.println(IntStream
