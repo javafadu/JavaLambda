@@ -1,3 +1,7 @@
+package lambdaTutorial;
+
+import lambdaTutorial.Lambda01;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +24,19 @@ public class Lambda02 {
         elTopla( sayi);
         System.out.println("\n   ***   ");
         ciftCarp(sayi);
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
+
+        System.out.println("\n   ***   ");
 
     }
 
@@ -51,7 +68,7 @@ public class Lambda02 {
                 stream().
                 filter(Lambda01::ciftBul).
                 map(Math::sqrt).//meth ref--> double deger return eder
-                //forEach(Lambda01::yazdir)--> yazdir() method int.  çalıştığı için map den çıkan dataları çalıştırmaz
+                //forEach(lambdaTutorial.Lambda01::yazdir)--> yazdir() method int.  çalıştığı için map den çıkan dataları çalıştırmaz
                         forEach(t -> System.out.print(t + " "));
     }
     // Task : list'in en buyuk elemanini yazdiriniz
@@ -121,4 +138,15 @@ public class Lambda02 {
                 filter(Lambda01::ciftBul).
                 reduce(1, (a, b) -> (a * b)));
     }
+    // Task : List'teki elemanlardan en kucugunu 4 farklı yontem ile print ediniz.
+    //1. yontem Method Reference --> Integer class
+    //2. yontem Method Reference --> Math class
+    //3. yontem Lambda Expression
+    //4. yontem Method Reference --> Haluk class
+
+    // Task : List'teki 5'ten buyuk en kucuk tek sayiyi print ediniz.
+    // Task : list'in cift  elemanlarinin karelerini  kucukten buyuge print ediniz.
+    // Task : list'in tek  elemanlarinin kareleri ni buykten kucuge  print ediniz.
+
+
 }

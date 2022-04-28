@@ -1,3 +1,5 @@
+package lambdaTutorial;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -148,7 +150,7 @@ public class Lambda01 {
         sayi.
                 stream().
                 filter(t -> t % 2 == 0 || t > 34).//çift veya 34'den buyuk elemanları filtreler 44 63 65 38
-                // filter(Lambda01::ciftBul).//method ref.
+                // filter(lambdaTutorial.Lambda01::ciftBul).//method ref.
                 // filter(t -> t > 34).//lambda exp.
                         forEach(Lambda01::yazdir);
     }
