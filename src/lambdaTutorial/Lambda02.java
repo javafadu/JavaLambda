@@ -2,10 +2,7 @@ package lambdaTutorial;
 
 import lambdaTutorial.Lambda01;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Lambda02 {
     public static void main(String[] args) {
@@ -21,22 +18,20 @@ public class Lambda02 {
         System.out.println("\n   ***   ");
         ciftKarteMaxBul(sayi);
         System.out.println("\n   ***   ");
-        elTopla( sayi);
+        elTopla(sayi);
         System.out.println("\n   ***   ");
         ciftCarp(sayi);
         System.out.println("\n   ***   ");
-
+        minBul(sayi);
+        System.out.println("\n   ***   ");
+        bestenBykEnKck(sayi);
+        System.out.println("\n   ***   ");
+        tekKareBkPrint( sayi);
+        System.out.println("\n   ***   ");
+        ciftKareKbPrint(sayi);
         System.out.println("\n   ***   ");
 
-        System.out.println("\n   ***   ");
 
-        System.out.println("\n   ***   ");
-
-        System.out.println("\n   ***   ");
-
-        System.out.println("\n   ***   ");
-
-        System.out.println("\n   ***   ");
 
     }
 
@@ -107,46 +102,88 @@ public class Lambda02 {
                 map(t -> t * t).
                 reduce(Integer::max));//36 specific class daha hızlı run olur
     }
-// Task : List'teki tum elemanlarin toplamini yazdiriniz.
+
+    // Task : List'teki tum elemanlarin toplamini yazdiriniz.
     //Lambda Expression...
-    public static void elTopla(List<Integer> sayi){
-      int toplam = sayi.stream().reduce(0,(a,b)->a+b);//Lambda Expression...
+    public static void elTopla(List<Integer> sayi) {
+        int toplam = sayi.stream().reduce(0, (a, b) -> a + b);//Lambda Expression...
         /*
         a ilk degerini her zaman atanan degerden (identity) alır
         b degerini her zamana  stream()'dan akısdan alır
         a ilk degerinden sonraki her değeri action(işlem)'dan alır
 
                */
-        System.out.println("Lambda exp. : " +toplam);
+        System.out.println("Lambda exp. : " + toplam);
         //Method Ref...
-      Optional<Integer> topla=  sayi.stream().reduce(Integer::sum);
-        System.out.println("method ref :"+sayi.stream().reduce(Integer::sum));//method ref
+        Optional<Integer> topla = sayi.stream().reduce(Integer::sum);
+        System.out.println("method ref :" + sayi.stream().reduce(Integer::sum));//method ref
 
     }
     // Task : List'teki cift elemanlarin carpimini  yazdiriniz.
 
-    public static void ciftCarp(List<Integer> sayi){
+    public static void ciftCarp(List<Integer> sayi) {
 //Method Ref...
-        System.out.println("method ref :"+sayi.
+        System.out.println("method ref :" + sayi.
                 stream().
                 filter(Lambda01::ciftBul).
                 reduce(Math::multiplyExact));
 //Lambda Expression...
 
-        System.out.println("Lambda exp. : " +sayi.
+        System.out.println("Lambda exp. : " + sayi.
                 stream().
                 filter(Lambda01::ciftBul).
                 reduce(1, (a, b) -> (a * b)));
     }
+
     // Task : List'teki elemanlardan en kucugunu 4 farklı yontem ile print ediniz.
-    //1. yontem Method Reference --> Integer class
-    //2. yontem Method Reference --> Math class
-    //3. yontem Lambda Expression
-    //4. yontem Method Reference --> Haluk class
+    public static void minBul(List<Integer> sayi) {
+        //1. yontem Method Reference --> Integer class
+        Optional<Integer> minSayiInteger = sayi.stream().reduce(Integer::min);
+        System.out.println(minSayiInteger);
+        //2. yontem Method Reference --> Math class
+        Optional<Integer> minSayiMath = sayi.stream().reduce(Math::min);
+        System.out.println(minSayiMath);
+        //3. yontem Lambda Expression
+        int minSayiLJambda = (sayi.stream().reduce(Integer.MAX_VALUE, (x, y) -> x < y ? x : y));
+        System.out.println(minSayiLJambda);
+        //4. yontem Method Reference --> Haluk class
+        Optional<Integer> minSayiHaluk = sayi.stream().reduce(Lambda02::byHalukMin);
+        System.out.println(minSayiHaluk);
+    }
+
+    public static int byHalukMin(int a, int b) {//bu method kendisine verilen iki int degerin en kücügunu return eder
+        return a < b ? a : b;
+    }
 
     // Task : List'teki 5'ten buyuk en kucuk tek sayiyi print ediniz.
+    public static void bestenBykEnKck(List<Integer> sayi) {
+
+        System.out.println(sayi.stream().filter(t -> t > 5 && t % 2 == 1).reduce(Lambda02::byHalukMin));
+    }
+
     // Task : list'in cift  elemanlarinin karelerini  kucukten buyuge print ediniz.
+    public static void ciftKareKbPrint(List<Integer> sayi) {
+        sayi.
+                stream().//akısa alındı
+                filter(Lambda01::ciftBul).//cift elemnlar fitrlenedi
+                map(t->t*t).//fitrelenen cift sayı karesi alındı
+                sorted().//karesi alınan elemanlar dogal(k->b) sıralandı
+                forEach(Lambda01::yazdir);//print edildi
+
+        //sorted() => Doğal düzene göre sıralanmış, bu akışın elemanlarında oluşan bir akış döndürür.
+        //Sorted() methodu tekrarlı kullanılırsa en son kullanılan aktif olur.
+    }
+
     // Task : list'in tek  elemanlarinin kareleri ni buykten kucuge  print ediniz.
 
+    public static void tekKareBkPrint(List<Integer> sayi) {
+        sayi.//akıs kaynagı
+                stream().//akısa alındı
+                filter(t->t%2!=0).//tek elemnlar fitrlenedi
+                map(t->t*t).//fitrelenen cift sayı karesi alındı
+                sorted(Comparator.reverseOrder()).//karesi alınan elemanlar ters(b->k) sıralandı
+                forEach(Lambda01::yazdir);//print edildi
 
+
+    }
 }
