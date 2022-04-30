@@ -48,7 +48,7 @@ public static boolean notOrt74BykUnv(List<Universite> unv ){
     //task 06--> ogrc sayisi en az olan 2. universite'yi  print ediniz.
 
 
-    //task 07--> notOrt 63 'den buyuk olan universite'lerin ogrc sayilarini toplamini print ediniz
+    //task 07--> notOrt 63 'den buyuk olan universite'lerin ogrc sayilarini toplamini print ediniz.
 
 
     //task 08--> Ogrenci sayisi 130'dan buyuk olan universite'lerin notOrt'larinin ortalamasini bulunuz.
@@ -57,7 +57,7 @@ public static boolean notOrt74BykUnv(List<Universite> unv ){
     //task 09-->"matematik" bolumlerinin sayisini  print ediniz.
 
 
-    //task 10-->Ogrenci sayilari 130'dan fazla olan universite'lerin en buyuk notOrt'unu bulunuz
+    //task 10-->Ogrenci sayilari 130'dan fazla olan universite'lerin en buyuk notOrt'unu bulunuz.
 
 
     //task 11-->Ogrenci sayilari 150'dan az olan universite'lerin en kucuk notOrt'unu bulunuz.
