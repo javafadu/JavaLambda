@@ -23,34 +23,92 @@ public class Lambda04 {
         List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
         System.out.println(notOrt74BykUnv(unv));
+        System.out.println("\n   ***   ");
+        System.out.println(ogrcSayisi110AzMi(unv));
+        System.out.println("\n   ***   ");
+        System.out.println(matBolumVarmi(unv));
+        System.out.println("\n   ***   ");
+        System.out.println(ogrSayiBkSirala(unv));
+        System.out.println("\n   ***   ");
+        ogrSayiBkSiralaVoid(unv);
+        System.out.println("\n   ***   ");
+        System.out.println(notOrtBkSialiIlkUc(unv));
+        System.out.println("\n   ***   ");
+        System.out.println(enAzOgrcSaysi2Unv(unv));
     }
 
     //task 01--> notOrt'larinin 74' den buyuk oldg kontrol eden pr create ediniz.
-public static boolean notOrt74BykUnv(List<Universite> unv ){
+    public static boolean notOrt74BykUnv(List<Universite> unv) {
 
-        return  unv.
+        return unv.
                 stream().
-                allMatch(t->t.getNotOrt()>74);
-}
+                allMatch(t -> t.getNotOrt() > 74);
+    }
 
     //task 02-->ogrc sayilarinin   110 den az olmadigini  kontrol eden pr create ediniz.
 
-
+    public static boolean ogrcSayisi110AzMi(List<Universite> unv) {
+        return unv.
+                stream().
+                allMatch(t -> t.getOgrSayisi() > 110);
+    }
     //task 03-->universite'lerde herhangi birinde "matematik" olup olmadigini  kontrol eden pr create ediniz.
 
+    public static boolean matBolumVarmi(List<Universite> unv) {
+        return unv.stream().
+                anyMatch(t -> t.getBolum().toLowerCase().contains("mat"));
+    }
 
     //task 04-->universite'leri ogr sayilarina gore b->k siralayiniz.
+    public static List<Universite> ogrSayiBkSirala(List<Universite> unv) {
+        return unv.
+                stream().
+                sorted(Comparator.comparing(Universite::getOgrSayisi).reversed()).
+                collect(Collectors.toList());
+    }
 
+    public static void ogrSayiBkSiralaVoid(List<Universite> unv) {
+        System.out.println(unv.
+                stream().
+                sorted(Comparator.comparing(Universite::getOgrSayisi).reversed()).
+                collect(Collectors.toList()));//collect()->akısdaki elamanları istenen sarta gore toplar
+        //Collectors.toList()->collect'e toplanan elemanlari list'e cevirir
+    }
 
     //task 05-->universite'leri notOrt gore  b->k siralayip ilk 3 'unu print ediniz.
+    public static List<Universite> notOrtBkSialiIlkUc(List<Universite> unv) {
+        return unv.
+                stream().//akısa alındı
+                        sorted(Comparator.comparing(Universite::getNotOrt).reversed()).//notOrt a göre b->k sıralandı
+                        limit(3).//akısın ilk 3 elemanı alındı
+                        collect(Collectors.toList());//akısın ilk 3 elemanı list'e assign edildi
+        //toList());//akısın ilk 3 elemanı list'e assign edildi
+    }
 
 
     //task 06--> ogrc sayisi en az olan 2. universite'yi  print ediniz.
 
+    public static List<Universite>  enAzOgrcSaysi2Unv(List<Universite> unv) {
+       return unv.
+                stream().
+                sorted(Comparator.comparing(Universite::getOgrSayisi)).
+                limit(2).
+                skip(1).
+                collect(Collectors.toList());
 
+    }
     //task 07--> notOrt 63 'den buyuk olan universite'lerin ogrc sayilarini toplamini print ediniz.
 
+public static int notOrt63BykUnvOgrcSayisiTopla(List<Universite> unv){
+      return   unv.
+                stream().
+                filter(t->t.getNotOrt()>63).
+                map(t->t.getOgrSayisi()).
+               // reduce(Integer::sum);
+               // reduce(Math::addExact);
+                reduce(0,(t,u)->t+u);
 
+}
     //task 08--> Ogrenci sayisi 130'dan buyuk olan universite'lerin notOrt'larinin ortalamasini bulunuz.
 
 
