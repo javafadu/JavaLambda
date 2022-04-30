@@ -77,11 +77,11 @@ public class Universite {
 
     @Override
     public String toString() {
-        return "Universite{" +
+        return
                 "universite='" + universite + '\'' +
-                ", bolum='" + bolum + '\'' +
-                ", ogrcSayisi=" + ogrcSayisi +
-                ", notOrt=" + notOrt +
-                '}';
+                        ", bolum='" + bolum + '\'' +
+                        ", ogrSayisi=" + ogrcSayisi +
+                        ", notOrt=" + notOrt +
+                        "\n";
     }
 }
