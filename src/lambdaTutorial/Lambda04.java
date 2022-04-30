@@ -15,12 +15,12 @@ public class Lambda04 {
      */
     public static void main(String[] args) {
 
-        Universite bogazici = new Universite("bogazici", "matematik", 571, 93);
-        Universite itu = new Universite("istanbul teknik", "matematik", 622, 81);
-        Universite istanbul = new Universite("istanbul", "hukuk", 1453, 71);
-        Universite marmara = new Universite("marmara", "bilgisayar muh", 1071, 77);
-        Universite ytu = new Universite("yıldız teknik", "gemi", 333, 74);
-        List<Universite> unv = new ArrayList<>(Arrays.asList(bogazici, itu, istanbul, marmara, ytu));
+        Universite u01 = new Universite("bogazici", "matematik", 571, 93);
+        Universite u02 = new Universite("istanbul teknik", "matematik", 622, 81);
+        Universite u03 = new Universite("istanbul", "hukuk", 1453, 71);
+        Universite u04 = new Universite("marmara", "bilgisayar muh", 1071, 77);
+        Universite u05 = new Universite("yıldız teknik", "gemi", 333, 74);
+        List<Universite> unv = new ArrayList<>(Arrays.asList(u01, u02, u03, u04, u05));
 
         System.out.println(notOrt74BykUnv(unv));
     }

@@ -143,11 +143,25 @@ public class Lambda03 {
                         reversed()).
                 //   findFirst();//ilk eleman alındı
                         limit(3);//limit(a) akısdan cıkan elemanları a parametresine gore ilk a elamanı alır.
-/*
-sonIsim.toArray()--> limit() meth return dan dolayı  stream type olan sonIsim toArray() method ile array type convert edildi
- */
 
-        System.out.println(Arrays.toString(sonIsim.toArray()));//arraya cevrilen sonIsim stream print edildi
+        // 2. yol... max() ve get() method
+        System.out.println(menü.
+                stream().
+                max(Comparator.comparing(String::length)).
+                get());
+    /*
+    sonIsim.toArray()--> limit() meth return dan dolayı  stream type olan sonIsim toArray() method ile array type convert edildi
+     */
+
+        System.out.println(Arrays.toString(sonIsim.toArray()));//arraya cevrilen sonIsim stream print edildi.
+
+        // 3. yol...veriable assign etmeden stream ifade toArray() ile arraya cevirip print edildi
+        System.out.println(Arrays.toString(menü.
+                stream().
+                sorted(Comparator.comparing(t -> t.toString().length()).
+                        reversed()).
+                limit(1).toArray()));
+
 
 //limit(1) => Sınırlandırma demek. Bu akışın elemanlarından oluşan, uzunluğu maxSize'dan uzun olmayacak
 // şekilde kesilmiş bir akış return eder. Stream return eder.
