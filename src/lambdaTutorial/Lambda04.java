@@ -163,7 +163,7 @@ public class Lambda04 {
     public static OptionalInt ogrcSayisi571BykMaxNotort(List<Universite> unv) {
         return unv.
                 stream().//akıs
-                        filter(t -> t.getOgrSayisi() > 571).//unv obj akısı fittrelendi
+                        filter(t -> t.getOgrSayisi() > 571).//unv obj akısı filtrelendi
                         mapToInt(t -> t.getNotOrt()).//akısdaki unv obj notOrt akısı olarak update edildi
                         max();   //akısın en byk degerini return eder
 
