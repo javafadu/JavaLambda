@@ -5,7 +5,29 @@ import java.util.stream.IntStream;
 
 public class Lambda05 {
     public static void main(String[] args) {
+        System.out.println("TASK 01 -->");
+        System.out.println("   ***   ");
 
+        System.out.println("TASK 02 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 03 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 04 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 05 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 06 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 07 -->");
+        System.out.println("   ***   ");
+
+        System.out.println("TASK 08 -->");
+        System.out.println("   ***   ");
 
     }
 
@@ -15,7 +37,6 @@ public class Lambda05 {
 
 
     //Functional(cincix Programming
-
 
 
     //TASK 02 --> 1'den x'e kadar cift tamsayilari toplayan bir program create ediniz.
