@@ -30,6 +30,19 @@ public class Lambda01 {
             Java’da bir koleksiyon (collection - bazen container, ambar diye adlandırılır) nesnelerden oluşan bir
             topluluğu bir arada tutan bir yapıdır. ‘Collections Framework’ ise arayüzler ve onların kurgularından
             (implementations) oluşur.
+
+             API:Uygulama programlama arayüzü
+             (İngilizce: Application Programming Interface, kısaca API), bir yazılımın başka bir yazılımda tanımlanmış işlevlerini
+             kullanabilmesi için oluşturulmuş bir tanım bütünüdür.
+             API, yazılım bileşeniyle olan etkileşimlerin bir özelliğidir.
+             Bu da örnek olarak şu anlama gelir. Bir arabanın bir yazılımı olduğunu hayal edin.
+             Bu arabanın API'si arabanın neler yapabileceği hakkında bilgi içerir; hızlanma, frenleme, camları açma, vs.
+             Ayrıca bunların nasıl yapabileceğine dair bilgiler de içerir.
+             Örneğin hızlanmak için ayağınızı gaz pedalına koyup itersiniz.
+             API, ayağınızı gaza bastığınızda motorun içinde neler olduğunu açıklamak zorunda değildir.
+             Bu nedenle, içten yanmalı motorlu bir araba kullanmayı öğrendiyseniz, tamamen
+             yeni bir dizi beceri öğrenmek zorunda kalmadan API sayesinde elektrikli bir arabayı rahatlıkla kullanabilirsiniz.
+
 	 */
 
         List<Integer> sayi = new ArrayList<>(Arrays.asList(34, 22, 16, 11, 35, 20, 63, 21, 65, 44, 66, 64, 81, 38, 15));
