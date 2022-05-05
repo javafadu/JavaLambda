@@ -1,9 +1,6 @@
 package _faduLambda;
 
-import java.util.Arrays;
 import java.util.stream.IntStream;
-
-import static java.awt.SystemColor.menu;
 
 public class Lambda05 {
     public static void main(String[] args) {
@@ -21,7 +18,8 @@ public class Lambda05 {
 
         // TASK3:
         System.out.println("---TASK3-----");
-        System.out.println("Task3 Functional : "+ilkxPozitifCiftSayiToplaFunctional(5));
+        System.out.println("Task3 Functional : "+ilkxPozitifCiftSayiToplaFunctional(10));
+        System.out.println("Task3 Functional : "+ilkxPozitifCiftSayiToplaFunctional2(10));
 
         // TASK4:
         System.out.println("---TASK4-----");
@@ -30,11 +28,13 @@ public class Lambda05 {
         // TASK5:
         System.out.println("---TASK5-----");
         ikininIlkXKuvvetiPrintFunctional(3);
+        ikininIlkXKuvvetiPrintFunctional2(3);
         System.out.println();
+
 
         // TASK6:
         System.out.println("---TASK6-----");
-        sayininIlkXKuvvetiPrintFunctional(5,5);
+        sayininIlkXKuvvetiPrintFunctional(4,3);
         System.out.println();
 
         // TASK7:
@@ -42,9 +42,11 @@ public class Lambda05 {
         System.out.println("Task7 Functional : "+sayiFaktoriyelHesaplaFunctional(5));
         System.out.println();
 
+
         // TASK8:
         System.out.println("---TASK8-----");
         sayininXKuvvetiPrintFunctional(3,5);
+        System.out.println(sayininXKuvvetiPrintFunctional2(3, 5));
         System.out.println();
 
 
@@ -60,7 +62,7 @@ public class Lambda05 {
 
     public static int xeKadarSayilariToplaStructured(int x) {
         int toplam=0;
-        for (int i = 0; i < x+1; i++) {
+        for (int i = 0; i <= x; i++) {
             toplam+=i;
         }
         return toplam;
@@ -69,7 +71,9 @@ public class Lambda05 {
 
     //Functional(cincix Programming
     public static int xeKadarSayilariToplaFunctional(int x) {
-        return IntStream.range(0,x+1).reduce(0,Math::addExact);
+        return IntStream.
+                range(1,x+1). // 1 den x dahil akisa aldik
+                sum(); // akisdaki degerler toplandi
     }
 
     public static int xeKadarSayilariToplaFaDu(int x) {
@@ -92,13 +96,26 @@ public class Lambda05 {
 
     //Functional(cincix Programming
     public static int xeKadarCiftSayilariToplaFunctional(int x) {
-        return IntStream.range(0,x+1).filter(t->t%2==0).reduce(0,Math::addExact);
+        return IntStream.rangeClosed(1,x).filter(t->t%2==0).sum();
     }
 
     //TASK 03 --> Ilk x pozitif cift sayiyi toplayan program  create ediniz.
 
+ //  public static int ilkxPozitifCiftSayiToplaStructured(int x) {
+ //      int toplam=0;
+ //      for (int i = 0; i <= x ; i++) {
+ //          if(i%2==0) {
+ //              toplam+=i;
+ //          }
+ //
+ //      } return toplam;
+ //  }
+
     public static int ilkxPozitifCiftSayiToplaFunctional(int x) {
-        return IntStream.range(0,Integer.MAX_VALUE).filter(t->t%2==0).limit(x+1).reduce(0,Integer::sum);
+        return IntStream.range(0,Integer.MAX_VALUE).filter(t->t%2==0).limit(x+1).sum();
+    }
+    public static int ilkxPozitifCiftSayiToplaFunctional2(int x) {
+        return IntStream.iterate(2,t->t+2).limit(x).sum();
     }
 
     //TASK 04 --> Ilk X pozitif tek tamsayiyi toplayan programi  create ediniz.
@@ -109,6 +126,9 @@ public class Lambda05 {
     //TASK 05 --> 2'nin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
     public static void ikininIlkXKuvvetiPrintFunctional(int x) {
         IntStream.range(0,Integer.MAX_VALUE).limit(x).mapToDouble(t->Math.pow(2,t)).forEach(t->System.out.print(t+" , "));
+    }
+    public static void ikininIlkXKuvvetiPrintFunctional2(int x) {
+        IntStream.iterate(2,t->t+1).limit(x).mapToDouble(t->Math.pow(2,t)).forEach(t->System.out.print(t+" , "));
     }
 
     //TASK 06 --> Istenilen bir sayinin ilk x kuvvetini ekrana yazdiran programi  create ediniz.
@@ -125,6 +145,9 @@ public class Lambda05 {
     //TASK 08 --> Istenilen bir sayinin  x. kuvvetini ekrana yazdiran programi  create ediniz.
     public static void sayininXKuvvetiPrintFunctional(int sayi, int x) {
         IntStream.range(0,Integer.MAX_VALUE).limit(1).mapToDouble(t->Math.pow(sayi,x)).forEach(t->System.out.print(t+" "));
+    }
+    public static double sayininXKuvvetiPrintFunctional2(int sayi, int x) {
+        return Math.pow(sayi,x);
     }
 
 }
