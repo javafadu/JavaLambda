@@ -1,5 +1,5 @@
 package LambdaPractice2022;
-//multi arrayleri cevirirken flapMap kullaniriz yapilis sekli iki turludur
+//multi arrayleri cevirirken flatMap kullaniriz yapilis sekli iki turludur
 //1) lamda kullanarak
 // Arrays.stream(arr).flatMap(t->Arrays.stream(t))
 //2) method ile
