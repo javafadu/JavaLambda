@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /*
@@ -24,30 +25,36 @@ cevirirken EXCEPTION OLUSMASIN DIYE => throws IOException <= EKLEMELIYIZ
 buda lines altinda kirmizi uyari veriyor uzerine tiklayinca kendiliginden oluyor
 */
 public class C7_DosyaOkuma {
+
     public static void main(String[] args) throws IOException {
 
-        Stream<String> satir= Files.lines(Path.of("src/lambda_practice/C7_TextFile"));
+
         //NOT PATH cift tirnak icine alinmali
         //artik stream e donustu methodlari kullanabiliriz
-
+        Path satir = Path.of("src/LambdaPractice2022/C7_TextFile");
 
     // S1: Yazdiralim
+
+        Files.lines(satir).forEach(t-> System.out.println(t));
 
 
     //S2: tum harflari buyuk harf ile yazdiralim
 
+        Files.lines(satir).map(String::toUpperCase).forEach(t-> System.out.println(t));
 
     // S3: son satiri buyuk harfle yazdiralim
-
+        Files.lines(satir).skip(4).map(String::toUpperCase).forEach(t-> System.out.println(t));
 
     //S4: 2.ve 3. satirlari yazdiralim
 
-
+        Files.lines(satir).skip(1).limit(2).forEach(t-> System.out.println(t));
     //S5: kac tane "icin" kelimesi vardir
 
 
-    //S6: tum kelimelerin tum kelimeleri natural order  yazdiriniz.
 
+    //S6: tum kelimelerin tum kelimeleri natural order  yazdiriniz.
+        Files.lines(satir).map(t-> t.split(" ")).flatMap(Arrays::stream).
+                sorted().forEach(t-> System.out.println(t));
 
     // S7:  metinde kac tane "a"  vardir
 
